@@ -1,7 +1,9 @@
-import FilterSidebar from "@/components/FilterSidebar";
+import FilterSidebar from '@/components/FilterSidebar';
 
 export default function Home() {
   return (
-    <div><FilterSidebar/> </div>
+    <main className="container mx-auto mb-auto">
+      <FilterSidebar />
+    </main>
   );
 }
