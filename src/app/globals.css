@@ -25,3 +25,8 @@ body {
     text-wrap: balance;
   }
 }
+
+.categories {
+  scrollbar-color: rebeccapurple green;
+  scrollbar-width: none;
+}

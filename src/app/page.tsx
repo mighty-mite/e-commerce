@@ -1,6 +1,7 @@
+import FilterSidebar from "@/components/FilterSidebar";
 
 export default function Home() {
   return (
-    <div>shop page</div>
+    <div><FilterSidebar/> </div>
   );
 }
