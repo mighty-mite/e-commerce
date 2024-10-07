@@ -8,7 +8,7 @@ export default function Sort() {
         <Select
           labelId="select-label"
           id="select"
-          // value={age}
+          value={'ASC'}
           label="Sort"
           // onChange={handleChange}
         >
