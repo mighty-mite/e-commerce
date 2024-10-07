@@ -1,16 +1,11 @@
-import CategoryItem from './CategoryItem';
+import Categories from './Categories';
+import Sort from './Sort';
 
 export default async function FilterSidebar() {
-  const response = await fetch('https://dummyjson.com/products/category-list');
-  const categories = await response.json();
   return (
-    <div className="py-6 px-5 border rounded-md border-gray-500 w-64">
-      <h3 className="mb-3">Categories</h3>
-      <ul className="overflow-y-scroll h-96 categories">
-        {categories.map((item: string, i: number) => (
-          <CategoryItem key={i} category={item} />
-        ))}
-      </ul>
+    <div className="py-6 px-5 border rounded-md border-gray-500 w-80 flex flex-col gap-6">
+      <Categories />
+      <Sort />
     </div>
   );
 }
