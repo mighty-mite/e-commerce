@@ -4,12 +4,12 @@ import { ICard } from '@/utils/types';
 import { Button, Card, Rating, Typography } from '@mui/material';
 
 export default async function CardField() {
-  const response = await fetch('https://fakestoreapi.com/products');
+  const response = await fetch('https://dummyjson.com/products?limit=0&skip=0');
   const cards = await response.json();
 
   return (
     <ul className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-6">
-      {cards.map((card: ICard) => {
+      {cards.products.map((card: ICard) => {
         return (
           <li key={card.id}>
             <Card className="flex flex-col justify-between p-6 gap-4">
@@ -19,7 +19,7 @@ export default async function CardField() {
               >
                 <div className="relative w-full h-52 overflow-hidden">
                   <Image
-                    src={card.image}
+                    src={card.thumbnail}
                     alt={card.title}
                     width="0"
                     height="0"
@@ -37,7 +37,7 @@ export default async function CardField() {
                 <Typography variant="h5" component="h5">
                   ${card.price}
                 </Typography>
-                <Rating value={card.rating.rate} readOnly />
+                <Rating value={card.rating} readOnly />
               </Link>
               <Button variant="contained">Add to cart</Button>
             </Card>
