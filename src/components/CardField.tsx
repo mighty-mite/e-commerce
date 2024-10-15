@@ -4,9 +4,16 @@ import { ICard } from '@/utils/types';
 import { Button, Card, Rating, Typography } from '@mui/material';
 import Pages from './Pages';
 
-export default async function CardField() {
+interface IProps {
+  searchParams: {
+    skip?: string;
+  };
+}
+
+export default async function CardField({ searchParams }: IProps) {
+  const skip = searchParams.skip || '0';
   const response = await fetch(
-    'https://dummyjson.com/products?limit=10&skip=0'
+    `https://dummyjson.com/products?limit=10&skip=${skip}`
   );
   const cards = await response.json();
 
