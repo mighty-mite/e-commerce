@@ -1,6 +1,6 @@
-import { TextField } from '@mui/material';
 import Link from 'next/link';
 import Image from 'next/image';
+import Search from './Search';
 
 export default function Header() {
   return (
@@ -8,12 +8,7 @@ export default function Header() {
       <Link className="" href="/">
         <Image priority width="163" height="41" src="logo.svg" alt="logo" />
       </Link>
-      <TextField
-        fullWidth={true}
-        size="small"
-        label="Search products"
-        variant="outlined"
-      />
+      <Search />
       <div className="flex items-center justify-self-end gap-12">
         <Link href="/cart">
           <Image width="20" height="21" src="/cart.svg" alt="cart link" />

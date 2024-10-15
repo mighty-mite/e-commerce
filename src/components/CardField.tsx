@@ -8,17 +8,24 @@ interface IProps {
   searchParams: {
     skip?: string;
     category?: string;
+    search?: string;
   };
 }
 
 export default async function CardField({ searchParams }: IProps) {
+  const urlBase = 'https://dummyjson.com/products';
   const skip = searchParams.skip || '0';
   const category = searchParams.category || '';
+  const search = searchParams.search || '';
 
-  let apiUrl = `https://dummyjson.com/products?limit=10&skip=${skip}`;
+  let apiUrl = `${urlBase}?limit=10&skip=${skip}`;
 
   if (category)
-    apiUrl = `https://dummyjson.com/products/category/${category}?limit=10&skip=${skip}`;
+    apiUrl = `${urlBase}/category/${category}?limit=10&skip=${skip}`;
+
+  if (search) {
+    apiUrl = `${urlBase}/search?q=${search}&limit=10&skip=${skip}`;
+  }
 
   const response = await fetch(apiUrl);
 
