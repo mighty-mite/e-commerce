@@ -7,14 +7,21 @@ import Pages from './Pages';
 interface IProps {
   searchParams: {
     skip?: string;
+    category?: string;
   };
 }
 
 export default async function CardField({ searchParams }: IProps) {
   const skip = searchParams.skip || '0';
-  const response = await fetch(
-    `https://dummyjson.com/products?limit=10&skip=${skip}`
-  );
+  const category = searchParams.category || '';
+
+  let apiUrl = `https://dummyjson.com/products?limit=10&skip=${skip}`;
+
+  if (category)
+    apiUrl = `https://dummyjson.com/products/category/${category}?limit=10&skip=${skip}`;
+
+  const response = await fetch(apiUrl);
+
   const cards = await response.json();
 
   return (

@@ -4,6 +4,7 @@ import FilterSidebar from '@/components/FilterSidebar';
 interface IProps {
   searchParams: {
     skip?: string;
+    category?: string;
     // [key: string]: string | undefined;
   };
 }

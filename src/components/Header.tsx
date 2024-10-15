@@ -6,7 +6,7 @@ export default function Header() {
   return (
     <header className="grid grid-cols-3 container mx-auto py-8">
       <Link className="" href="/">
-        <Image width="163" height="41" src="logo.svg" alt="logo" />
+        <Image priority width="163" height="41" src="logo.svg" alt="logo" />
       </Link>
       <TextField
         fullWidth={true}
