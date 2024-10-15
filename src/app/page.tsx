@@ -5,7 +5,9 @@ export default function Home() {
   return (
     <main className="container mx-auto mb-auto flex">
       <FilterSidebar />
-      <CardField />
+      <div>
+        <CardField />
+      </div>
     </main>
   );
 }
