@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { ICard } from '@/utils/types';
 import { Button, Card, Rating, Typography } from '@mui/material';
 import Pages from './Pages';
+import { Suspense } from 'react';
 
 interface IProps {
   searchParams: {
@@ -70,7 +71,9 @@ export default async function CardField({ searchParams }: IProps) {
           );
         })}
       </ul>
-      <Pages count={Math.ceil(cards.total / 10)} />
+      <Suspense fallback={<h3>loading</h3>}>
+        <Pages count={Math.ceil(cards.total / 10)} />
+      </Suspense>
     </div>
   );
 }
