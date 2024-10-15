@@ -40,7 +40,7 @@ export default async function CardField({ searchParams }: IProps) {
             <li key={card.id}>
               <Card className="flex flex-col justify-between p-6 gap-4">
                 <Link
-                  href="/"
+                  href={`/${card.id}`}
                   className="flex flex-col justify-between gap-4 h-full"
                 >
                   <div className="relative w-full h-52 overflow-hidden">
