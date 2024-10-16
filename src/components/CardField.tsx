@@ -10,6 +10,8 @@ interface IProps {
     skip?: string;
     category?: string;
     search?: string;
+    sortBy?: string;
+    order?: string;
   };
 }
 
@@ -18,14 +20,24 @@ export default async function CardField({ searchParams }: IProps) {
   const skip = searchParams.skip || '0';
   const category = searchParams.category || '';
   const search = searchParams.search || '';
+  const sort = searchParams.sortBy || 'price';
+  const sortOrder = searchParams.order || '';
 
   let apiUrl = `${urlBase}?limit=10&skip=${skip}`;
 
   if (category)
     apiUrl = `${urlBase}/category/${category}?limit=10&skip=${skip}`;
 
-  if (search) {
-    apiUrl = `${urlBase}/search?q=${search}&limit=10&skip=${skip}`;
+  if (search) apiUrl = `${urlBase}/search?q=${search}&limit=10&skip=${skip}`;
+
+  if (sort && sortOrder) {
+    if (!search && !category) {
+      apiUrl = `${urlBase}/?limit=10&skip=${skip}&sortBy=price&order=${sortOrder}`;
+    } else if (search && !category) {
+      apiUrl = `${urlBase}/search?q=${search}&limit=10&skip=${skip}&sortBy=price&order=${sortOrder}`;
+    } else if (!search && category) {
+      apiUrl = `${urlBase}/category/${category}/?limit=10&skip=${skip}&sortBy=price&order=${sortOrder}`;
+    }
   }
 
   const response = await fetch(apiUrl);

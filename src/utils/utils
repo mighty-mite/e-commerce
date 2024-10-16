@@ -1,0 +1,5 @@
+import { ReadonlyURLSearchParams } from 'next/navigation';
+
+export function applyFilters(searchParams: ReadonlyURLSearchParams) {
+  const searchParams = useSearchParams();
+}
