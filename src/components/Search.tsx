@@ -12,18 +12,18 @@ export default function Search() {
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    const params = new URLSearchParams(searchParams.toString());
-    if (params.get('skip')) params.set('skip', '0'); // delete skip if skip is in URL when typing
     setValue(e.target.value);
   };
 
   useEffect(() => {
     const params = new URLSearchParams(searchParams.toString());
+    const currentSearch = params.get('search');
 
-    if (value) {
+    if (value && value !== currentSearch) {
       if (params.has('category')) params.delete('category');
       params.set('search', value);
-    } else {
+      params.set('skip', '0');
+    } else if (!value) {
       params.delete('search');
     }
     router.push(pathname + '?' + params.toString());
