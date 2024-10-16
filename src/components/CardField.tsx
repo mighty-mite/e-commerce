@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { ICard } from '@/utils/types';
-import { Button, Card, Rating, Typography } from '@mui/material';
+import { Button, Card, IconButton, Rating, Typography } from '@mui/material';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Pages from './Pages';
 import { Suspense } from 'react';
 
@@ -49,11 +50,18 @@ export default async function CardField({ searchParams }: IProps) {
       <ul className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-6">
         {cards.products.map((card: ICard) => {
           return (
-            <li key={card.id}>
-              <Card className="flex flex-col justify-between p-6 gap-4">
+            <li className="relative" key={card.id}>
+              <IconButton
+                className="absolute right-2"
+                color="default"
+                aria-label="add an alarm"
+              >
+                <FavoriteBorderIcon />
+              </IconButton>
+              <Card className="flex flex-col justify-between">
                 <Link
-                  href={`/${card.id}`}
-                  className="flex flex-col justify-between gap-4 h-full"
+                  href={`/product-page/${card.id}`}
+                  className="flex flex-col justify-between gap-4 p-6 h-full"
                 >
                   <div className="relative w-full h-52 overflow-hidden">
                     <Image
