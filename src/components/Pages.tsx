@@ -20,6 +20,7 @@ export default function Pages({ count }: IProps) {
   };
 
   const current = Number(params.get('skip')) / 10 + 1;
+
   // 0 => 1, 10 => 2, 20 => 3
   return (
     <Pagination

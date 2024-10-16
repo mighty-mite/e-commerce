@@ -12,6 +12,8 @@ export default function Search() {
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
+    const params = new URLSearchParams(searchParams.toString());
+    if (params.get('skip')) params.set('skip', '0'); // delete skip if skip is in URL when typing
     setValue(e.target.value);
   };
 

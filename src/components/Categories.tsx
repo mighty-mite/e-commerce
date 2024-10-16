@@ -16,6 +16,7 @@ export default function Categories() {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const params = new URLSearchParams(searchParams.toString());
 
   useEffect(() => {
     fetch('https://dummyjson.com/products/category-list')
@@ -23,6 +24,11 @@ export default function Categories() {
       .then((categories) => setCategories(categories))
       .catch((e) => console.error(e.message));
   }, []);
+
+  useEffect(() => {
+    const category = searchParams.get('category') || '';
+    setValue(category); // Sync the selected value with the URL
+  }, [searchParams]); // Trigger this effect whenever searchParams change
 
   const handleChange = (_event: React.ChangeEvent, value: string) => {
     setValue(value);
@@ -61,6 +67,7 @@ export default function Categories() {
               value={item}
               control={<Radio />}
               label={item.charAt(0).toUpperCase() + item.slice(1)}
+              disabled={!!params.get('search')}
             />
           ))}
         </RadioGroup>
