@@ -46,17 +46,7 @@ export default async function CardField({ searchParams }: IProps) {
     <div className="flex flex-col flex-between">
       <ul className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-6">
         {cards.products.map((card: ICard) => {
-          return (
-            <CardElement
-              key={card.id}
-              // {...card}
-              title={card.title}
-              thumbnail={card.thumbnail}
-              id={card.id}
-              price={card.price}
-              rating={card.rating}
-            />
-          );
+          return <CardElement key={card.id} {...card} />;
         })}
       </ul>
       <Suspense fallback={<h3>loading</h3>}>
