@@ -23,12 +23,14 @@ export default function Pages({ count }: IProps) {
 
   // 0 => 1, 10 => 2, 20 => 3
   return (
-    <Pagination
-      size="large"
-      count={count}
-      color="primary"
-      onChange={handleChange}
-      page={current}
-    />
+    <div className="flex justify-center">
+      <Pagination
+        size="large"
+        count={count}
+        color="primary"
+        onChange={handleChange}
+        page={current}
+      />
+    </div>
   );
 }
